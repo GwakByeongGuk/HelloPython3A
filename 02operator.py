@@ -64,3 +64,36 @@ num = input('경과 일수:')
 print(f'''
 {num}일 이후 예상 감염자 수 : {2**int(num)}명
 ''')
+
+# 할당 연산자 - 어떤 값을 변수에 할당하는 연산자 (=)
+# += 더한 뒤 대입, -= 뺀 뒤 대입, *= 곱한 뒤 대입, **= 제곱한 뒤 대입
+# /= 나눈 뒤 대입. //= 나눈 뒤 몫을 대입, %= 나눈 뒤 나머지를 대입
+
+# 논리 연산자 단축식 평가
+# 논리 연산자 - and, or, not 피연산자의 boolean 값을 기준으로 평가하는 연산자
+# 단축 평가란 논리 연산에서 두번째 피연산자를 평가하지 않고 결과를 결정하는 동작
+test = 'abcde'
+print(('a'and'f')in test) # False
+print(('f'and'a')in test) # True
+
+# 삼항 연산자
+# 조건문을 한 줄로 표현할 수 있는 연산자
+# 참일 때 값 if 조건식 else 거짓일 때 값
+
+myScore = 75
+result = '합격!' if myScore >= 90 else '불합격!'
+print(result)
+
+# 복리 계산기
+# 범퍼카 탑승
+num = int(input('어린이의 신장을 입력하세요 :'))
+print('입장하세요' if num > 120 else '입장할 수 없습니다.')
+# 범퍼카 탑승 가능 판별
+max = 170
+min = 120
+num = int(input('어린이의 신장을 입력하세요 "'))
+print(num >= min and num < max)
+# 적자/흑자 판별
+num1 = int(input('수입을 입력해주세요 :'))
+num2 = int(input('지출을 입력해주세요 :'))
+print('흑자' if num1 > num2 else num < num2)
