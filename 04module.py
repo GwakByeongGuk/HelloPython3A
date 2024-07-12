@@ -39,9 +39,42 @@ print(dt.datetime.now().
 # operator 모듈
 
 # 긴급재난 지원금 대상자 판별
+import operator as op
+tgIncome = 4_000_000
 
-# 수은 계산기
+income = int(input('월 소득을 입력하세요 : '))
+benefit = int(input('다른 지원금을 받고 있습니까? 1번 받고있다. 2번 받고 있지 않다.'))
+# match (income,benefit):
+#      case (income,benefit) if income <= 4000000 and benefit == 2:
+#            print('수급 대상자입니다.')
+#      case (income,benefit) if income >= 4000000 and benefit == 2:
+#            print('수급 대상자가 아닙니다.')
+#      case (income,benefit) if income <= 4000000 and benefit == 1:
+#            print('수급 대상자가 아닙니다.')
+result = '수급 대상자입니다.' if op.and_((op.le(income,4000000)), \
+            (op.eq(benefit,2))) else '수급 대상자가 아닙니다.'
+print(result)
+
+# 수온 계산기
+import operator as op
+wt = 20
+depth = int(input('수심을 입력하세요 : '))
+# result = wt - (depth//10) * 0.7
+result = op.sub(wt,
+     op.mul(op.floordiv(depth,10) ,0.7))
+print(f'수십 {depth} m - 수온 {result} ℃ ')
 
 # 자동차 주행거리 계산
+import operator as op
+speed = int(input('주행속도 : '))
+time = int(input('주행시간 : '))
+result = op.mul(speed,time)
+print(f'주행이동거리 : {result}')
 
-# 엄무 컴퓨터 수량 파악
+# 업무 컴퓨터 수량 파악
+# 3 * 8 = c * t
+worktime = float(input('근무시간을 입력하세요 : '))
+expr1 = op.mul(3,8)
+comp = op.floordiv(op.mul(3,8),worktime)
+etcComp = 1 if (op.mod(expr1,worktime) > 0) else 0
+print(f'필요한 컴퓨터 : {comp + etcComp}')
