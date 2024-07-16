@@ -56,3 +56,13 @@ for idx, k in enumerate(member):
 # key와 value를 한번에 출력 : 변수명.items
 for k, v in member.items():
     print(k, v)
+
+# 중간고사 성적 관리
+quizs = []
+trueCount = 0
+falseCount = 0
+totalScore = 0
+
+# 수학시험 프로그램
+
+# 로또 당첨 게임
