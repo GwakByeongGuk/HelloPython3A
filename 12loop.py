@@ -107,13 +107,15 @@ while min < 541:
     total_minutes = min
     hour = start_time + min // 60
     minute = total_minutes % 60
-
-    if minute % trainA == 0 and minute % trainB == 0:
-        print(f'{hour}시 {minute}분 : A - B 교차!')
-    elif minute % trainB == 0 and minute % trainC == 0:
-        print(f'{hour}시 {minute}분 : B - C 교차!')
-    elif minute % trainA == 0 and minute % trainC == 0:
-        print(f'{hour}시 {minute}분 : A - C 교차!')
+    if minute % 5 == 0:
+        if minute % trainA == 0 and minute % trainB == 0:
+            print(f'{hour:02d}시 {minute:02d}분 : A - B 교차!')
+        elif minute % trainB == 0 and minute % trainC == 0:
+            print(f'{hour:02d}시 {minute:02d}분 : B - C 교차!')
+        elif minute % trainA == 0 and minute % trainC == 0:
+            print(f'{hour:02d}시 {minute:02d}분 : A - C 교차!')
+        elif minute % trainA == 0 and minute % trainB == 0 and minute % trainC == 0:
+            print(f'{hour:02d}시 {minute:02d}분 : A - B - C 교차!')
     min += 1
 
 # 로그인 기능 만들기
@@ -132,3 +134,42 @@ while True:
     else:
         print('로그인 실패!! 횟수 초과!!!')
         break
+
+# 반복문 내 건너뛰기 : continue
+# for, while문 내에서 반복 흐름을 일시적으로 넘기기 위해 사용
+
+# 1 ~ 10 사이 정수 중 홀수의 합 출력
+sum = 0
+
+for i in range(1, 11):
+    if i % 2 == 0:
+        continue
+    sum += 1
+
+print(sum)
+
+# 1 ~ 100 사이 정수의 합을 출력
+# 단, 3의 배수나 7의 배수는 제외
+# for문
+sum = 0
+
+for i in range(1, 101):
+    if i % 3 == 0 or i % 7 == 0:
+        continue
+    sum += i
+
+print(sum)
+
+# while문
+sum = 0
+i = 1
+
+while i < 101:
+    if i % 3 == 0 or i % 7 == 0:
+        i += 1
+        continue
+    sum += i
+    i += 1
+
+print(sum)
+
