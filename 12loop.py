@@ -55,6 +55,11 @@ while i < 10000:
 
 # 1 ~ 100 사이의 정수 중
 # 3과 8의 공배수만 출력
+result = ''
+for i in range(1, 100+1):
+    if i % 3 == 0 and i % 8 == 0:
+        result += f'{i} '
+
 i = 0
 while i < 100:
     i += 1
@@ -62,17 +67,18 @@ while i < 100:
         print(i)
 
 # 삼각형 넓이 계산하기
-i = 1 # 밑변 1부터 2의 배수로 증가
-j = 1 # 높이 1부터 3의 배수로 증가
-k = 0 # 넓이
-while k < 150:
-    i += 2
-    j += 3
-    k = i*j/2
-    if k > 150:
+limitArea = 150
+width = 2
+height = 3
+i = 1
+while True:
+    area = ((width * i) * (height * i)) / 2
+    if area > limitArea:
         break
-    print(k)
-
+    print(f'삼각형의 밑변 : {width*i}cm '
+          f'삼각형의 높이 : {height*i}cm '
+          f'삼각형의 넓이 : {area}㎠ ')
+    i += 1
 
 # 369 게임 (while로 작성)
 # '3' in str(36)
@@ -89,4 +95,40 @@ while i < 100:
     print(i, jjak)
     i += 1
 
+# 열차 교차시간 알아보기
+trainA = 10
+trainB = 25
+trainC = 30
 
+start_time = 9
+min = 1
+
+while min < 541:
+    total_minutes = min
+    hour = start_time + min // 60
+    minute = total_minutes % 60
+
+    if minute % trainA == 0 and minute % trainB == 0:
+        print(f'{hour}시 {minute}분 : A - B 교차!')
+    elif minute % trainB == 0 and minute % trainC == 0:
+        print(f'{hour}시 {minute}분 : B - C 교차!')
+    elif minute % trainA == 0 and minute % trainC == 0:
+        print(f'{hour}시 {minute}분 : A - C 교차!')
+    min += 1
+
+# 로그인 기능 만들기
+cntLogin = 1
+while True:
+    passwd = input('관리자 암호를 입력하세요: ')
+
+    if passwd == 'hanbitac':
+        print('로그인 되었습니다.')
+        break
+    else:
+        print('암호를 다시 입력하세요!')
+
+    if cntLogin < 5:
+        cntLogin += 1
+    else:
+        print('로그인 실패!! 횟수 초과!!!')
+        break
