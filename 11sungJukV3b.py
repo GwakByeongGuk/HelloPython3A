@@ -9,6 +9,7 @@
 
 import sys
 
+# 성적 데이터 관련 변수 선언
 names = []
 kors = []
 engs = []
