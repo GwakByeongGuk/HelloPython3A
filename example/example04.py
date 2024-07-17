@@ -100,3 +100,61 @@ if cardno[0] == '5':
         result = '마스터카드 KB국민카드'
 
 print(f'{cardno} / {result}')
+
+# 16 개선하기 - 리스트/반복문/함수
+
+price = 34_560
+paid = 50_000
+
+def compute_charge(price, paid):
+    changes = [50000, 10000, 5000, 1000, 500, 100, 50, 10]
+    result = {}
+    charge = paid - price
+    for change in changes:
+        count = charge // change
+        charge %= change
+        result[change] = count
+    return result
+
+def print_change(price, paid, change_count):
+    print(f'''
+금액 : {price:,} 원
+지불금액 : {paid:,} 원
+잔돈 : {(paid-price):,} 원
+-----------
+''')
+
+    for result, count in change_count.items():
+        if result >= 1000:
+            print(f'{result:,}원 : {count} 장')
+        else:
+            print(f'{result}원 : {count} 개')
+
+change_count = compute_charge(price, paid)
+print_change(price, paid, change_count)
+
+def compute_charge(price, paid):
+    charges = []
+    moneys = [50000, 10000, 5000, 1000, 500, 100, 50, 10]
+    charge = paid - price
+
+    for money in moneys:
+        charges.append(charge // money)
+        charge %= money
+
+    result = f'''
+    금액 : {price:,} 원
+    지불금액 : {paid:,} 원
+    잔돈 : {paid-price:,} 원
+    ------------
+    '''
+    for idx, m in enumerate(moneys):
+        result += f'{m}원, {charges[idx]} 장/개\n'
+
+    print(result)
+
+# 잔돈 구하는 함수 호출 및 테스트
+price = int(input('지불해야 할 금액은? '))
+paid = int(input('받은 금액은? '))
+compute_charge(price,paid)
+
