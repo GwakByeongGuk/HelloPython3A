@@ -50,3 +50,6 @@ def showSungJuk():
         result += f'이름: {sj[0]}, 국어: {sj[1]}, 영어: {sj[2]}, 수학: {sj[3]}, 총점: {sj[4]}, 평균: {sj[5]}, 등급: {sj[6]}\n'
     print(result)
 
+
+
+
