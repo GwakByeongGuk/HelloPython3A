@@ -27,7 +27,7 @@ while True:
         pass
     elif menu == '5':
         print('사원 데이터 삭제')
-        pass
+        emp.deleteEmp()
     elif menu == '0':
         print('프로그램 종료')
         sys.exit(0)

@@ -61,4 +61,8 @@ def showOneEmp():
                   f'{emp[7]} {emp[8]} {emp[9]} {emp[10]}')
     print(result)
 
+def deleteEmp():
+    empid = input('삭제할 사원 번호는? ')
+    emp = empdao.deleteEmp(empid)
+
 
