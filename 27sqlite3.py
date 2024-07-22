@@ -104,3 +104,46 @@ print(result)
 # 6
 cursor.close()
 conn.close()
+
+# 파이썬으로 데이터베이스 다루기 5 - 데이터 상세 조회
+# 1
+conn = sqlite3.connect('db/python.db')
+
+# 2
+cursor = conn.cursor()
+
+# 3
+sql = 'select * from member where userid = ?'
+params = ('11',)
+
+# 4
+cursor.execute(sql, params)
+rs = cursor.fetchone() # 조회 결과가 딱 1개만 존재할 때 사용
+
+# 5
+print(f'{rs[0]} {rs[1]} {rs[2]} {rs[3]}')
+
+# 6
+cursor.close()
+conn.close()
+
+
+# 파이썬으로 데이터베이스 다루기 6 - 데이터 삭제
+
+# 1
+conn = sqlite3.connect('db/python.db')
+
+# 2
+cursor = conn.cursor()
+
+# 3
+sql = ('delete form member where userid = ?')
+
+# 4
+cursor.execute(sql, params)
+print(cursor.rowcount, '건의 데이터가 삭제됨!!')
+conn.commit()
+
+# 5
+cursor.close()
+conn.close()
