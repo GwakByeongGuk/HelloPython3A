@@ -63,6 +63,10 @@ def showOneEmp():
 
 def deleteEmp():
     empid = input('삭제할 사원 번호는? ')
+    result = '데이터가 존재하지 않아요!'
     emp = empdao.deleteEmp(empid)
+    if emp > 0:
+        result = f'{emp}건의 데이터가 삭제됨!!'
+    print(result)
 
 

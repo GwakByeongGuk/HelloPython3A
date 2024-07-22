@@ -56,7 +56,9 @@ def deleteEmp(empid):
     sql = 'delete from emp where empid = ?'
     params = (empid,)
     cursor.execute(sql, params)
+    cnt = cursor.rowcount
     conn.commit()
     cursor.close()
     conn.close()
+    return cnt
 
