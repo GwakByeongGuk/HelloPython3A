@@ -61,3 +61,9 @@ def computeSungJuk(sj):
                 '양' if (sj[5] >= 60) else '가'
     sj.append(grd)
 
+def deleteSungJuk():
+    sjno = input('삭제할 학생 번호는? ')
+    sjv7dao.deleteSungJuk(sjno)
+
+
+
