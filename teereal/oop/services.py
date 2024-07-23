@@ -51,11 +51,17 @@ class SungJukService:
         result = ''
         sjs = sjdao.select_sungjuk()
         for sj in sjs:
-            result += f'번호: {sj[0]}, 이름: {sj[1]}, 국어: {sj[2]}, 영어: {sj[3]}, 수학: {sj[4]}, 등록일: {sj[5]}\n'
+            result += f'번호: {sj.sjno}, 이름: {sj.name}, 국어: {sj.kor}, 영어: {sj.eng}, 수학: {sj.mat}, 등록일: {sj.regdate}\n'
         print(result)
     @staticmethod
     def showone_sungjuk():
-        pass
+        sjno = input('조회할 학생 번호는? ')
+        result = '데이터가 존재하지 않아요!!'
+        sj = sjdao.selectone_sungjuk(sjno)
+        if sj:
+            result = (f'번호: {sj.sjno}, 이름: {sj.name}, 국어: {sj.kor}, 영어: {sj.eng}, 수학: {sj.mat}\n'
+                      f'총점: {sj.tot}, 평균: {sj.avg:.1f}, 학점: {sj.grd}, 등록일: {sj.regdate}')
+        print(result)
     @staticmethod
     def modify_sungjuk():
         pass
@@ -64,4 +70,6 @@ class SungJukService:
         pass
     @staticmethod
     def remove_sungjuk():
-        pass
+        sjno = input('삭제할 학생 번호는? ')
+        cnt = sjdao.delete_sungjuk(sjno)
+        print(f'{cnt} 건의 데이터가 삭제됨')

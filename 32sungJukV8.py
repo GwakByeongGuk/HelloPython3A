@@ -32,11 +32,14 @@ while True:
     elif menu == '4':
         print('성적 데이터 수정')
         sjv8.modify_sungjuk()
+
     elif menu == '5':
         print('성적 데이터 삭제')
         sjv8.remove_sungjuk()
+
     elif menu == '0':
         print('프로그램 종료')
         sys.exit(0)
+
     else:
         print('메뉴를 잘못 선택하셨습니다!!')
