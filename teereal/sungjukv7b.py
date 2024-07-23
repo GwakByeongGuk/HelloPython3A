@@ -65,5 +65,26 @@ def deleteSungJuk():
     sjno = input('삭제할 학생 번호는? ')
     sjv7dao.deleteSungJuk(sjno)
 
+def modifySungJuk():
+    sjno = input('수정할 학생 번호는? ')
+    sj = sjv7dao.readOneSungJuk(sjno)
+
+    if sj: # 수정할 데이터가 존재한다면
+        sj = readAgainSungJuk(sj)
+        sjv7dao.updateSungJuk(sj)
+
+    else:
+        print('수정할 데이토가 존재하지 않아요! ')
+
+# 기존 성적 데이터를 확인하면서 수정할 성적데이터 재입력
+def readAgainSungJuk(sj):
+    nsj = []
+    nsj .append(sj[1]) # nsj[1] 학생 이름
+    nsj .append(int(input(f'{sj[1]}학생의 새로운 국어는? ({sj[2]}) ')))
+    nsj .append(int(input(f'{sj[1]}학생의 새로운 영어는? ({sj[3]}) ')))
+    nsj .append(int(input(f'{sj[1]}학생의 새로운 수학은? ({sj[4]}) ')))
+    computeSungJuk(nsj)
+    nsj.append(sj[0]) # nsj[8] 학생번호
+    return nsj
 
 
