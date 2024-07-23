@@ -62,3 +62,20 @@ def deleteEmp(empid):
     conn.close()
     return cnt
 
+def modifyEmp(emp):
+    sql = 'update emp set email=?,phone=?,jobid=?,sal=?,comm=?,mgrid=?,deptid=?' \
+          'where empid =?'
+    conn = sqlite3.connect('db/python.db')
+    cursor = conn.cursor()
+    params = (emp[3],emp[4],emp[6],
+              emp[7],emp[8],emp[9],emp[10],emp[0])
+    cursor.execute(sql, params)
+    cnt = cursor.rowcount
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return cnt
+
+def updateEmp(emp):
+    return 0
+

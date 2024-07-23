@@ -69,4 +69,32 @@ def deleteEmp():
         result = f'{emp}건의 데이터가 삭제됨!!'
     print(result)
 
+def modifyEmp(emp):
+    empid = input('수정할 사원 번호는? ')
+    emp = empdao.readOneEmp(empid)
+    result = '수정할 데이터가 존재하지 않아요!'
 
+    if emp:
+        emp = readAgainEmp(emp)
+        cnt = empdao.updateEmp(emp)
+        result = f'{cnt}건의 데이터가 삭제됨'
+    print(result)
+
+
+def readAgainEmp(emp):
+    nemp=[]
+    nemp.append(emp[0])
+    nemp.append(emp[1])
+    nemp.append(emp[2])
+    nemp.append(input(f'수정할 사원 이메일은? ({emp[3]}) '))
+    nemp.append(input(f'수정할 사원 이메일은? ({emp[4]}) '))
+    nemp.append(emp[5])
+    nemp.append(input(f'수정할 사원 직책은? ({emp[6]}) '))
+    nemp.append(input(f'수정할 사원 금여는? ({emp[7]}) '))
+    nemp.append(input(f'수정할 사원 수당은? ({emp[8]}, 없으면 0) '))
+    nemp.append(input(f'수정할 사원 매니저 번호는? ({emp[9]},없으면 0) '))
+    nemp.append(input(f'수정할 사원 부서 번호는? ({emp[10]}, 없으면 0) '))
+    nemp[8] = float(nemp[8]) if nemp[8] != '0' else None
+    nemp[9] = float(nemp[9]) if nemp[9] != '0' else None
+    nemp[10] = float(nemp[10]) if nemp[10] != '0' else None
+    return nemp
