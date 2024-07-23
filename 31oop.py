@@ -43,7 +43,7 @@ def readSungJuk():
     return name,kor,eng,mat
 
 # 성적 처리
-def computeSungJuk(kor,eng,mat)
+def computeSungJuk(kor,eng,mat):
     tot = kor + eng + mat
     avg = tot / 3
     grd = '가'
