@@ -81,8 +81,7 @@ class empDAO:
         sql = '''update emp set email=%s, phone=%s, jobid=%s, sal=%s, comm=%s, mgrid=%s, deptid=%s
                  where empid=%s'''
         conn,cursor = empDAO._make_conn()
-        params = (emp[3],emp[4],emp[6],
-                  emp[7],emp[8],emp[9],emp[10])
+        params = (emp[3],emp[4],emp[6], emp[7],emp[8],emp[9],emp[10])
         cursor.execute(sql, params)
         cnt = cursor.rowcount
         conn.commit()
