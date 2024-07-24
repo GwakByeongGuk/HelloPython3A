@@ -137,7 +137,7 @@ conn = sqlite3.connect('db/python.db')
 cursor = conn.cursor()
 
 # 3
-sql = ('delete form member where userid = ?')
+sql = ('delete from member where userid = ?')
 
 # 4
 cursor.execute(sql, params)
