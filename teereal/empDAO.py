@@ -90,5 +90,14 @@ class empDAO:
 
     @staticmethod
     def updateEmp(emp):
-        return 0
+        sql = '''update emp set fname = %s, lname = %s, email = %s, phone = %s, hdate = %s, 
+                 jobid = %s,sal = %s, comm = %s, mgrid = %s, deptid = %s
+                 where empid = %s'''
+        conn,cursor = empDAO._make_conn()
+        params = (emp[0], emp[1], emp[2], emp[3], emp[4], emp[5], emp[6], emp[7], emp[8], emp[9], emp[10])
+        cursor.execute(sql, params)
+        cnt = cursor.rowcount
+        conn.commit()
+        empDAO._dis_conn(conn, cursor)
+        return cnt
 
