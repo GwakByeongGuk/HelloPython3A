@@ -83,7 +83,6 @@ class empService:
         result = '수정할 데이터가 존재하지 않아요!'
 
         if emp:
-            emp = readAgainEmp(emp)
             cnt = empdao.updateEmp(emp)
             result = f'{cnt}건의 데이터가 삭제됨'
         print(result)
