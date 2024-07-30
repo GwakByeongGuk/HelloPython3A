@@ -4,7 +4,6 @@ from mysql.connector import Error
 from urllib import parse
 from datetime import datetime, timezone
 
-
 api_key = "RGAPI-b01bf1cf-d992-449c-bea5-bf2fe8092529"
 REQUEST_HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36",
@@ -14,13 +13,13 @@ REQUEST_HEADERS = {
     "X-Riot-Token": api_key
 }
 
-
 db_config = {
     'host': '3.35.133.116',
     'database': 'clouds2024',
     'user': 'clouds2024',
     'password': 'clouds2024'
 }
+
 def unix_to_readable(timestamp):
     dt = datetime.fromtimestamp(timestamp, tz=timezone.utc)
     return dt.strftime('%Y-%m-%d %H:%M:%S')
@@ -84,10 +83,14 @@ def save_matches_to_db(cursor, matches):
             )
             cursor.execute(query, values)
 
+def save_match_ids_to_file(match_ids, filename):
+    with open(filename, 'w') as f:
+        for match_id in match_ids:
+            f.write(f"{match_id}\n")
+
 def main():
     connection = None
     try:
-
         connection = mysql.connector.connect(**db_config)
         cursor = connection.cursor()
 
@@ -100,6 +103,9 @@ def main():
         puuid = player_id['puuid']
 
         game_ids = get_game_ids(puuid, start=0, count=50)
+
+        # 매치 ID를 파일에 저장
+        save_match_ids_to_file(game_ids, "match_ids.txt")
 
         matches = [get_game_info(game_id) for game_id in game_ids]
 
