@@ -89,7 +89,7 @@ def main():
         cursor = connection.cursor()
 
         champion_data = fetch_champion_data()
-        match_ids = ["KR_7170336982"]
+        match_ids = ["KR_7170336982"]  # 분석할 매치 ID 리스트
 
         for match_id in match_ids:
             game_info = fetch_game_info(match_id)
